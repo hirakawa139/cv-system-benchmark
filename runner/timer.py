@@ -36,7 +36,7 @@ class Timer:
         if self.use_gpu:
             self.end_event.record()
             torch.cuda.synchronize()
-            elapsed_time = self.start_event.elapesed_time(self.end_event) / 1000 # 秒単位に直している
+            elapsed_time = self.start_event.elapsed_time(self.end_event) / 1000 # 秒単位に直している
         else:
             self.end_time = time.time()
             elapsed_time = self.end_time - self.start_time
