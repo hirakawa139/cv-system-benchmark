@@ -7,3 +7,7 @@ __pycache__/
 
 # 生成されたログファイルは無視
 /logs/*.json
+
+# サンプル以外のモデルは無視
+/models/
+!/models/sample/*
