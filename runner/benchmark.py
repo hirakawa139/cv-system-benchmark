@@ -12,9 +12,13 @@ RUNNER_DIR = os.path.abspath(os.path.dirname(__file__))
 LOG_DIR = os.path.join(RUNNER_DIR, "..", "logs")  
 
 def benchmark_model(model_name, epochs):
-    model_runner = load_model_runner(model_name)
-    if model_runner is None:
+    model_module = load_model_runner(model_name)
+    if model_module is None:
+        print(f"モデル {model_name} のロードに失敗しました。")
         return
+    
+    # Runnerクラスのインスタンスを生成
+    model_runner = model_module.Runner()
     
     print(f"==== {model_name} の学習を開始 ====")
     train_timer = Timer()
