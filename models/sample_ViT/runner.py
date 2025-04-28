@@ -1,5 +1,6 @@
 import time
 from models.sample_ViT.sample_vit import Sample_ViT
+from models.sample_ViT.Tiny_ImageNet_downloader import prepare_tiny_imagenet
 
 """Sample_ViT での学習・推論を呼び出す
 """
@@ -7,6 +8,7 @@ from models.sample_ViT.sample_vit import Sample_ViT
 class Runner:
     def __init__(self):
         self.model = None
+        prepare_tiny_imagenet() # TinyImageNetデータセットがなければダウンロード・解凍
     
     def train(self, epochs=10):
         self.model = Sample_ViT()

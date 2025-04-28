@@ -69,8 +69,12 @@ def prepare_tiny_imagenet():
     zip_path = os.path.join(BASE_DIR, "tiny-imagenet-200.zip")
     data_dir = os.path.join(BASE_DIR, "tiny-imagenet-200")
 
-    download_tiny_imagenet(zip_path, data_dir)
-    convert_val_to_imagefolder_format(data_dir)
+    if not os.path.exists(data_dir):
+        # TinyImageNetデータセットがなければダウンロード・解凍
+        download_tiny_imagenet(zip_path, data_dir)
+        convert_val_to_imagefolder_format(data_dir)
+    else:
+        print("Skipping download and conversion steps as the Tiny ImageNet dataset already exists.")
 
 if __name__ == "__main__":
     prepare_tiny_imagenet()
