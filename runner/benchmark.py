@@ -1,8 +1,10 @@
 import os
+import sys
 import json
 from datetime import datetime
 import argparse
 import torch
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from runner.timer import Timer
 from models.model_runner import load_model_runner
 
