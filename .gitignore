@@ -11,5 +11,6 @@ __pycache__/
 # サンプル以外のモデルは無視
 /models/*
 !/models/model_runner.py
+!/models/sample_ViT
 /models/sample_ViT/*
 !/models/sample_ViT/*.py
