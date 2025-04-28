@@ -9,7 +9,7 @@ __pycache__/
 /logs/*.json
 
 # サンプル以外のモデルは無視
-/models/
+/models/*
 !/models/model_runner.py
-!/models/sample_ViT/*
-/models/sample/tiny-imagenet-200/*
+/models/sample_ViT/*
+!/models/sample_ViT/*.py
