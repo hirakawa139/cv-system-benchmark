@@ -16,6 +16,6 @@ pip install -r requirements.txt
 
 3. 以下のようにしてsampleViTでのベンチマークを実行
 ```
-python runner.py sampleViT --epochs=10 --mode=single
+python runner/benchmark.py  sampleViT --epochs=10 --mode=single
 ```
 ※mode：single or distributed を指定
