@@ -10,8 +10,8 @@ class Runner:
         prepare_tiny_imagenet() # TinyImageNetデータセットがなければダウンロード・解凍
         self.model = Sample_ViT()
     
-    def train(self, epochs=10):
-        self.model.train(epochs=epochs) # 学習を実行
+    def train(self, epochs=10, mode="single"):
+        self.model.train(epochs=epochs, mode=mode) # 学習を実行
         self.model_is_trained = True
 
     def infer(self):

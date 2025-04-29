@@ -11,7 +11,7 @@ from models.model_runner import load_model_runner
 RUNNER_DIR = os.path.abspath(os.path.dirname(__file__)) 
 LOG_DIR = os.path.join(RUNNER_DIR, "..", "logs")  
 
-def benchmark_model(model_name, epochs):
+def benchmark_model(model_name, epochs, mode):
     model_module = load_model_runner(model_name)
     if model_module is None:
         print(f"モデル {model_name} のロードに失敗しました。")
@@ -23,7 +23,7 @@ def benchmark_model(model_name, epochs):
     print(f"==== {model_name} の学習を開始 ====")
     train_timer = Timer()
     train_timer.start()
-    model_runner.train(epochs)
+    model_runner.train(epochs, mode)
     train_time = train_timer.stop()
     print(f"学習時間: {train_time:.2f} 秒")
 
@@ -53,6 +53,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description="深層学習モデルのベンチマークツール")
     parser.add_argument("model", type=str, help="使用するモデルの名前(models/ のサブディレクトリ名)")
     parser.add_argument("--epochs", type=int, default=10, help="学習を行う epoch 数")
+    parser.add_argument("--mode", type=str, default="single", choices=["single", "distributed"], help="学習時のモード (single or distributed)")
     args = parser.parse_args()
 
-    benchmark_model(args.model, args.epochs)
+    benchmark_model(args.model, args.epochs, args.mode)
